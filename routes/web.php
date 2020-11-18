@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//    return view('welcome');
+    return redirect()->route('validateBasic.index');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Route::get('api/v1/validateBasic', function () {
+//    return 'Hello World';
+//});
+
+Route::get('api/v1/validateBasic','App\Http\Controllers\ValidateBasicController@index')->name('validateBasic.index');
